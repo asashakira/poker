@@ -22,16 +22,14 @@
 
 <?php
 @$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
-if ($con == false)
-{
+if ($con == false) {
   print("DATABASE CONNECTION ERROR\n");
   exit;
 }
 
 
 
-if(isset($_POST['uname']))
-{
+if(isset($_POST['uname'])) {
 
   $sql1 = ("select coin from passdb where uname ='".$_POST['uname']."'");
 
@@ -48,11 +46,8 @@ if(isset($_POST['uname']))
   print("</form>");
 }
 
-
-
 ?>
 
+</body>
 
-      </body>
-
-      </html>
+</html>
