@@ -15,73 +15,45 @@
 
 <?php
 
- // データベースへの接続
-@$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
+@$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2058 user=enuser2058 password=enpass2058");
 if ($con == false){
   print("DATABASE CONNECTION ERROR\n");
   exit;
 }
 
+$sql = "select name from user_info where name = '{$_POST['name']}'";
 
-$sql1 = "select uname from passdb where uname = '{$_POST['uname']}'"; // SQLのコマンド文を文字列に格納する。
-
-print $sql1."<br>";
-
-@$result = pg_query($sql1); // SQLのコマンドでデータベースに問い合わせする。
+@$result = pg_query($sql);
 if($result == false){
   print"DATA ACQUISITION ERROR\n";
   exit;
 }
-
 $row = pg_num_rows($result);
+pg_free_result($result);
 
-pg_free_result($result); // SQLの実行結果を格納していたメモリを解放。
-
-if($row > 0){ // 入力されたユーザ名が、データベースの中に１つ以上ある時は「登録済み」
-
-  pg_close($con); // データベースとの接続を閉じる。
-
+if($row > 0) {
+  pg_close($con);
   print "<p>\n";
   print "そのユーザ名は登録済みです。\n";
   print "</p>\n";
 
   print "<p>\n";
-  print "<a href=\"index.php\">戻る</a>\n";
+  print "<a href=\"signup.html\">戻る</a>\n";
   print "</p>\n";
 
   print "</body>\n";
-
   print "</html>\n";
-
   exit;
 }
 
-
-// 以下は、プログラミングドリルの1-cを参照せよ
-
-$sql1 = "insert into passdb values('".$_POST['uname']."','".$_POST['pass']."',10)"; // テーブルpassdbに、ユーザ名とパスワードを登録する。
-
-print $sql1."<br>";
-
-@$result = pg_query($sql1); // SQLのコマンドでデータベースに問い合わせする。
-if($result == false){
+$sql = "insert into user_info values('".$_POST['name']."','".$_POST['pass']."',10000)";
+@$result = pg_query($sql);
+if($result == false) {
   print"DATA INSERTION ERROR\n";
   exit;
 }
-pg_free_result($result); // SQLの実行結果を格納していたメモリを解放。
+pg_free_result($result);
 
-
-$sql2 = "create table ".$_POST['uname']." (id int, pass int)"; // ユーザ名のテーブルを作成する。列はidとpassで、型はどちらもint。
-print $sql2."<br>";
-
-@$result = pg_query($sql2); // SQLのコマンドでデータベースに問い合わせする。
-if($result == false){
-  print"TABLE CREATION ERROR\n";
-  exit;
-}
-
-pg_free_result($result); // SQLの実行結果を格納していたメモリを解放。
-pg_close($con); // データベースとの接続を閉じる。
 ?>
 
 <p>

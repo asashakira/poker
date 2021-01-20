@@ -15,38 +15,27 @@
 
 <?php
 
- // データベースへの接続
-@$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
+@$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2058 user=enuser2058 password=enpass2058");
 if ($con == false){
-  print($_POST['uname']."はデータにありません\n");
+  print("DATABASE CONNECTION ERROR\n");
   exit;
 }
 
-
-$sql1 = "select * from passdb where uname = '".$_POST['uname']."' and pass ='".$_POST['pass']."'";
-
-print $sql1."<br>";
-
-$result = pg_query($sql1); // SQLのコマンドでデータベースに問い合わせする。
-
-print @$result;
-
-@$count = pg_num_rows($result);//レコードがあるか判断する
-
-
-
-if($count == null)
-    {
-      print("DATABASE CONNECTION ERROR\n");
-      print "<br>";
-      print("<a href=\"main.php\">戻る");
+$sql = "select * from user_info where name = '{$_POST['name']}' and pass = '{$_POST['pass']}'";
+@$result = pg_query($sql);
+if($result == false) {
+  print "DATA ERROR\n";
   exit;
 }
-pg_free_result($result); // SQLの実行結果を格納していたメモリを解放
 
-
-pg_close($con); // データベースとの接続を閉じる。
-
+if($count == null) {
+  print("DATABASE CONNECTION ERROR\n");
+  print "<br>";
+  print("<a href=\"main.php\">戻る");
+  exit;
+}
+pg_free_result($result);
+pg_close($con);
 
 ?>
 
@@ -55,14 +44,12 @@ pg_close($con); // データベースとの接続を閉じる。
 </p>
 
 <?php
-//min.phpにユーザとパスワードの値を渡す
 
 print ("<form action =\"main.php\" method=\"post\">");
 print "<br>";
 print("USER: <input type = \"test\" name = \"uname\" value=".$_POST['uname'].">");
 print("PASS:<input type=\"tezt\" name=\"pass\" value=".$_POST['pass']."><br>");
 print ("<input type = \"submit\">");
-
 
 ?>
 
