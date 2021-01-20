@@ -22,6 +22,7 @@ for($i = 0; $i < 52; $i++) {
   swap($a[$i], $a[$r]);
 }
 
+/*
 $p1[0] = $a[0];
 $p1[1] = $a[1];
 $p2[0] = $a[2];
@@ -82,7 +83,7 @@ $bb = 200; // big blind
 
 </div> <!-- play div end -->
 
-<?php
+ */
 $b[0] = 4;
 $b[1] = 4;
 $b[2] = 4;
@@ -96,7 +97,6 @@ $c[3] = 0;
 $c[4] = 0;
 
 
-/*
 for($i = 0; $i < 7; $i++)
   $b[$i] = $a[$i];
 for($i = 0; $i < 7; $i++)
@@ -111,12 +111,6 @@ for($i = 0; $i < 5; $i++)
 print "hand rank";
 print handRank($b);
 
-for($i = 0; $i < 7; $i++)
-  print_card($c[$i]);
-$c = bestHand($c);
-print "hand rank";
-print handRank($c);
-
 ?>
 <h1>
 <?php
@@ -129,7 +123,6 @@ else
     print "top";
   else
     print "bottom";
- */
 ?>
 </h1>
 
