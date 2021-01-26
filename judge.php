@@ -27,7 +27,6 @@ $a = $_POST['card'];
     }
 ?>
   </div> <!-- cards div end -->
-
 </div> <!-- play div end -->
 
 <div class="text-wrap">

@@ -46,22 +46,28 @@ $bet = 100;
     }
 ?>
   </div> <!-- cards div end -->
-<?php
-    for($i = 0; $i < 5; $i++)
-      print "<input id=\"hidden{$i}\" type=\"hidden\" name=\"card[]\" value={$a[$i]}>\n"
-?>
-    <div class="btn-wrap">
-      <button id="submit">けってい</button>
-    </div>
-  </form>
-
-  <div class="coin-wrap">
-<?php print $coin; ?>
-  </div>
-  <div class="bet-wrap">
-<?php print $bet; ?>
-  </div>
 </div> <!-- play div end -->
+
+<?php
+  for($i = 0; $i < 5; $i++)
+    print "<input id=\"hidden{$i}\" type=\"hidden\" name=\"card[]\" value={$a[$i]}>\n"
+?>
+  <div class="btn-wrap">
+    <button id="submit">けってい</button>
+  </div>
+</form>
+
+<div class="text-wrap">
+オープンしている　カードより<br>
+強いカードを　右の4枚から　選んでください
+</div>
+
+<div class="coin-wrap">
+<?php print $coin; ?>
+</div>
+<div class="bet-wrap">
+<?php print $bet; ?>
+</div>
 
 </body>
 </html>

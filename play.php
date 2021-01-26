@@ -39,23 +39,30 @@ $bet = 100;
     }
 ?>
   </div> <!-- cards div end -->
-  <form id="myform" action="judge.php" method="post">
-<?php
-    for($i = 0; $i < 5; $i++)
-      print "\t\t<input id=\"hidden{$i}\" type=\"hidden\" name=\"card[]\" value={$a[$i]}>\n"
-?>
-    <div class="btn-wrap">
-      <button id="change">くばる</button>
-    </div>
-  </form>
-
-  <div class="coin-wrap">
-<?php print $coin; ?>
-  </div>
-  <div class="bet-wrap">
-<?php print $bet; ?>
-  </div>
 </div> <!-- play div end -->
+
+<form id="myform" action="judge.php" method="post">
+<?php
+  for($i = 0; $i < 5; $i++)
+    print "\t\t<input id=\"hidden{$i}\" type=\"hidden\" name=\"card[]\" value={$a[$i]}>\n"
+?>
+  <div class="btn-wrap">
+    <button id="change">くばる</button>
+  </div>
+</form>
+
+<div class="bottom-wrap">
+  <div class="coin">
+    <div class="title">COIN</div>
+    <p id="coin"><?php print $coin; ?></p>
+  </div>
+  <div class="bet">
+    <div class="title">BET</div>
+    <p id="bet"><?php print $bet; ?></p>
+    <button onclick="minusBet()">-</button>
+    <button onclick="plusBet()">+</button>
+  </div>
+</div>
 
 <script>
 function getChecked(name) {
@@ -91,6 +98,18 @@ btn.addEventListener('click', (event) => {
   }
   btn.submit();
 });
+
+function plusBet() {
+  var x = document.getElementById("bet").textContent;
+  if(parseInt(x) + 100 <= 1000)
+    document.getElementById("bet").innerHTML = parseInt(x) + 100;
+}
+
+function minusBet() {
+  var x = document.getElementById("bet").textContent;
+  if(parseInt(x) - 100 > 0)
+    document.getElementById("bet").innerHTML = parseInt(x) - 100;
+}
 
 </script>
 

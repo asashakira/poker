@@ -10,6 +10,11 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .cards {
   display: flex;
   border: 3px solid green; 
@@ -51,5 +56,20 @@ button, input[type=checkbox], input[type=radio] {
 .text-wrap {
   text-align: center;
   margin: 20px;
+  border: 3px solid blue; 
+}
+
+.bottom-wrap {
+  display: flex;
+  border: 3px solid green; 
+}
+
+.coin {
+  margin: 30px;
+  border: 3px solid blue; 
+}
+
+.bet {
+  margin: 30px;
   border: 3px solid blue; 
 }
