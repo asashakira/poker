@@ -12,11 +12,18 @@
 <?php
 include 'poker.php';
 
+@$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
+if($con == false) {
+  print "Database Connection Error";
+  exit;
+}
+
 $a = $_POST['card'];
+//$a = array(0, 1, 2, 3, 4);
+$user = $_POST['user'];
 $bet = $_POST['bet'];
 $coin = $_POST['coin'];
 $win = $bet;
-//$a = array(0, 1, 2, 3, 4);
 ?>
 
 <div class="yaku-table">
@@ -82,7 +89,11 @@ $win = $bet;
 <div class="text-wrap">
 <?php switch(handRank($a)): ?>
 <?php case 1: ?>
-<?php $win = 0; ?>
+<?php
+$win = 0;
+$sql = "update passdb set coin = '$coin' where uname = '$user'";
+@$res = pg_query($sql);
+?>
     残念でした！</br>
     もういちど　ポーカーを遊びますか？
   <div class="btn-wrap">
@@ -149,11 +160,13 @@ endswitch ?>
   ダブルアップに挑戦しますか？
   <div class="btn-wrap">
     <form action="doubleUp.php" method="post">
+      <input type="hidden" name="user" value="<?php print $user; ?>">
       <input type="hidden" name="coin" value="<?php print $coin; ?>">
       <input type="hidden" name="bet" value="<?php print $win; ?>">
       <button type="submit">はい</button>
     </form>
-    <form action="play.php">
+    <form action="play.php" method="post">
+      <input type="hidden" name="user" value="<?php print $user; ?>">
       <button type="submit">いいえ</button>
     </form>
   </div> <!-- btn-wrap end -->

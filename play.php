@@ -23,7 +23,17 @@ for($i = 0; $i < 52; $i++) {
   swap($a[$i], $a[$r]);
 }
 
-$coin = 10000;
+
+$user = "kkk";
+@$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
+if($con == false) {
+  print "Database Connection Error";
+  exit;
+}
+
+$sql = "select coin from passdb where uname = '$user'";
+@$res = pg_query($sql);
+$coin = pg_fetch_result($res, 0, 0);
 $coin -= 100;
 $bet = 100;
 ?>
@@ -92,6 +102,7 @@ $bet = 100;
 <?php
   for($i = 0; $i < 5; $i++)
     print "<input id=\"hidden{$i}\" type=\"hidden\" name=\"card[]\" value={$a[$i]}>\n";
+  print "<input id=\"hidden-user\" type=\"hidden\" name=\"user\" value={$user}>\n";
   print "<input id=\"hidden-bet\" type=\"hidden\" name=\"bet\" value={$bet}>\n";
   print "<input id=\"hidden-coin\" type=\"hidden\" name=\"coin\" value={$coin}>\n";
 ?>
