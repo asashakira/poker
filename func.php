@@ -21,7 +21,7 @@ function print_card($a) {
   if($s == 0) $c = " Diamond";
   if($s == 1) $c = " Club";
   if($s == 2) $c = " Heart";
-  if($s == 3) $c = " Ace";
+  if($s == 3) $c = " Spade";
 
   print "<h3>".$b.$c."</h3>";
 }

@@ -1,49 +1,55 @@
 
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 a {
   text-decoration: none;
 }
 
-.play {
-  background: url("img/table_green.png") no-repeat center;
-  background-size: 100% 100%;
-  padding: 0 15px;
-  margin: 0 auto;
-  height: 600px;
-  width: 1000px;
-  position: relative;
-}
-
-.p1 {
-  position: absolute;
-  left: 43%;
-  top:  78%;
-}
-
-.p2 {
-  position: absolute;
-  left: 43%;
-  top: 12%;
-}
-
-.player-info {
-  width: 150px;
-  height: 50px;
-  background: gray;
-  border-radius: 100px;
+.cards {
   display: flex;
-  align-items: center;
+  border: 3px solid green; 
+}
+
+.card {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  margin: 0 25px;
+  border: 3px solid red; 
 }
 
-.player-name {
+.card img {
+  width: 125px;
+  padding-bottom: 10px;
 }
 
-.player-cards {
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+  border: 3px solid green; 
 }
 
-.player-coins {
+button, input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+}
+
+.btn-wrap button {
+  background-color: black;
+  color: white;
+  margin: 4px 2px;
+  padding: 10px 50px;
+  border: none;
+  border-radius: 18px;
+  outline: none;
+}
+
+.text-wrap {
+  text-align: center;
+  margin: 20px;
+  border: 3px solid blue; 
 }

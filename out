@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+  <title>Poker</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts.js"></script>
+</head>
+<body>
+
+
+
+<p>judge</p>
+Warning: Undefined array key "card" in C:\Apache24\htdocs\texas\judge.php on line 17
+
+<div class="play">
+  <div class="cards">
+<div class="card"><img id="card0" src="img/cards/0.png">
+</div><div class="card"><img id="card1" src="img/cards/1.png">
+</div><div class="card"><img id="card2" src="img/cards/2.png">
+</div><div class="card"><img id="card3" src="img/cards/3.png">
+</div><div class="card"><img id="card4" src="img/cards/4.png">
+</div>  </div> <!-- cards div end -->
+
+  <div class="coin-wrap">
+  </div>
+  <div class="bet-wrap">
+  </div>
+</div> <!-- play div end -->
+
+  <div class="text-wrap">
+    おめでとうございます！</br>
+ストレートフラッシュです！    <br>
+    成功すると コインが2倍になります．</br>
+    ダブルアップに挑戦しますか？
+    </div> <!-- end text-wrap -->
+  <div class="btn-wrap">
+    <form action="doubleUp.php">
+      <button type="submit">はい</button>
+    </form>
+    <form action="play.php">
+      <button type="submit">いいえ</button>
+    </form>
+  </div>
+
+
+
+</body>
+</html>
