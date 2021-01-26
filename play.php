@@ -13,7 +13,6 @@
 <?php
 include 'poker.php';
 
-print "<p>play</p>";
 // init
 for($i = 0; $i < 52; $i++)
   $a[$i] = $i;
@@ -25,8 +24,56 @@ for($i = 0; $i < 52; $i++) {
 }
 
 $coin = 10000;
+$coin -= 100;
 $bet = 100;
 ?>
+
+<div class="yaku-table">
+  <table class="table-left">
+    <tr>
+      <td>ロイヤルストレートスライム</td>
+      <td class="yaku-bet" id="bet11"><?php print $bet * 500; ?></td>
+    </tr>
+    <tr>
+      <td>ロイヤルストレートフラッシュ</td>
+      <td class="yaku-bet" id="bet10"><?php print $bet * 100; ?></td>
+    </tr>
+    <tr>
+      <td>ストレートフラッシュ</td>
+      <td class="yaku-bet" id="bet9"><?php print $bet * 50; ?></td>
+    </tr>
+    <tr>
+      <td>フォーカード</td>
+      <td class="yaku-bet" id="bet8"><?php print $bet * 20; ?></td>
+    </tr>
+    <tr>
+      <td>フルハウス</td>
+      <td class="yaku-bet" id="bet7"><?php print $bet * 10; ?></td>
+    </tr>
+  </table>
+  <table class="table-right">
+    <tr>
+      <td>フラッシュ</td>
+      <td class="yaku-bet" id="bet6"><?php print $bet * 5; ?></td>
+    </tr>
+    <tr>
+      <td>ストレート</td>
+      <td class="yaku-bet" id="bet5"><?php print $bet * 4; ?></td>
+    </tr>
+    <tr>
+      <td>スリーカード</td>
+      <td class="yaku-bet" id="bet4"><?php print $bet * 3; ?></td>
+    </tr>
+    <tr>
+      <td>ツーペア</td>
+      <td class="yaku-bet" id="bet3"><?php print $bet * 2; ?></td>
+    </tr>
+    <tr>
+      <td>ペア</td>
+      <td class="yaku-bet" id="bet2"><?php print $bet; ?></td>
+    </tr>
+  </table>
+</div> <!-- yaku-wrap end -->
 
 <div class="play">
   <div class="cards">
@@ -44,7 +91,9 @@ $bet = 100;
 <form id="myform" action="judge.php" method="post">
 <?php
   for($i = 0; $i < 5; $i++)
-    print "\t\t<input id=\"hidden{$i}\" type=\"hidden\" name=\"card[]\" value={$a[$i]}>\n"
+    print "<input id=\"hidden{$i}\" type=\"hidden\" name=\"card[]\" value={$a[$i]}>\n";
+  print "<input id=\"hidden-bet\" type=\"hidden\" name=\"bet\" value={$bet}>\n";
+  print "<input id=\"hidden-coin\" type=\"hidden\" name=\"coin\" value={$coin}>\n";
 ?>
   <div class="btn-wrap">
     <button id="change">くばる</button>
@@ -52,17 +101,24 @@ $bet = 100;
 </form>
 
 <div class="bottom-wrap">
-  <div class="coin">
-    <div class="title">COIN</div>
-    <p id="coin"><?php print $coin; ?></p>
-  </div>
-  <div class="bet">
-    <div class="title">BET</div>
-    <p id="bet"><?php print $bet; ?></p>
-    <button onclick="minusBet()">-</button>
-    <button onclick="plusBet()">+</button>
-  </div>
-</div>
+  <div class="money-wrap">
+    <table>
+      <tr>
+        <td>COIN</td>
+        <td class="td-center"><span id="coin"><?php print $coin; ?></span></td>
+      </tr>
+      <tr>
+        <td>BET</td>
+        <td "td-center">
+          <button onclick="minusBet()">-</button>
+          <span id="bet"><?php print $bet; ?></span>
+          <button onclick="plusBet()">+</button>
+        </td>
+      </tr>
+    </table>
+  </div> <!-- money-wrap end -->
+</div> <!-- bottom-wrap end -->
+
 
 <script>
 function getChecked(name) {
@@ -100,15 +156,51 @@ btn.addEventListener('click', (event) => {
 });
 
 function plusBet() {
-  var x = document.getElementById("bet").textContent;
-  if(parseInt(x) + 100 <= 1000)
-    document.getElementById("bet").innerHTML = parseInt(x) + 100;
+  var bet = document.getElementById("bet").textContent;
+  var coin = document.getElementById("coin").textContent;
+  if(parseInt(bet) + 100 <= 1000) {
+    x = parseInt(bet) + 100;
+    document.getElementById("bet").innerHTML   = x;
+    document.getElementById("bet2").innerHTML  = x;
+    document.getElementById("bet3").innerHTML  = x * 2;
+    document.getElementById("bet4").innerHTML  = x * 3;
+    document.getElementById("bet5").innerHTML  = x * 4;
+    document.getElementById("bet6").innerHTML  = x * 5;
+    document.getElementById("bet7").innerHTML  = x * 10;
+    document.getElementById("bet8").innerHTML  = x * 20;
+    document.getElementById("bet9").innerHTML  = x * 50;
+    document.getElementById("bet10").innerHTML = x * 100;
+    document.getElementById("bet11").innerHTML = x * 500;
+    document.getElementById("hidden-bet").value = x;
+
+    y = parseInt(coin) - 100;
+    document.getElementById("coin").innerHTML = y;
+    document.getElementById("hidden-coin").value = y;
+  }
 }
 
 function minusBet() {
-  var x = document.getElementById("bet").textContent;
-  if(parseInt(x) - 100 > 0)
-    document.getElementById("bet").innerHTML = parseInt(x) - 100;
+  var bet = document.getElementById("bet").textContent;
+  var coin = document.getElementById("coin").textContent;
+  if(parseInt(bet) - 100 > 0) {
+    x = parseInt(bet) - 100;
+    document.getElementById("bet").innerHTML   = x;
+    document.getElementById("bet2").innerHTML  = x;
+    document.getElementById("bet3").innerHTML  = x * 2;
+    document.getElementById("bet4").innerHTML  = x * 3;
+    document.getElementById("bet5").innerHTML  = x * 4;
+    document.getElementById("bet6").innerHTML  = x * 5;
+    document.getElementById("bet7").innerHTML  = x * 10;
+    document.getElementById("bet8").innerHTML  = x * 20;
+    document.getElementById("bet9").innerHTML  = x * 50;
+    document.getElementById("bet10").innerHTML = x * 100;
+    document.getElementById("bet11").innerHTML = x * 500;
+    document.getElementById("hidden-bet").value = x;
+
+    y = parseInt(coin) + 100;
+    document.getElementById("coin").innerHTML = y;
+    document.getElementById("hidden-coin").value = y;
+  }
 }
 
 </script>
