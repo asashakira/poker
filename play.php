@@ -24,11 +24,13 @@ for($i = 0; $i < 52; $i++) {
   swap($a[$i], $a[$r]);
 }
 
+/*
 @$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
 if($con == false) {
   print "Database Connection Error";
   exit;
 }
+ */
 
 if(isset($_POST['win'])) {
   $user = $_POST['user'];
@@ -39,9 +41,9 @@ if(isset($_POST['win'])) {
 //$user = $_POST['user'];
 $user = "akira";
 $sql = "select coin from passdb where uname = '$user'";
-@$res = pg_query($sql);
+//@$res = pg_query($sql);
 $coin = 10000;
-$coin = pg_fetch_result($res, 0, 0);
+//$coin = pg_fetch_result($res, 0, 0);
 $bet = 100;
 $coin -= $bet;
 ?>
@@ -54,45 +56,45 @@ $coin -= $bet;
 
 <div class="yaku-table">
   <table class="table-left">
-    <tr>
+    <tr id="yaku11">
       <td>ロイヤルストレートスライム</td>
       <td class="yaku-bet" id="bet11"><?php print $bet * 500; ?></td>
     </tr>
-    <tr>
+    <tr id="yaku10">
       <td>ロイヤルストレートフラッシュ</td>
       <td class="yaku-bet" id="bet10"><?php print $bet * 100; ?></td>
     </tr>
-    <tr>
+    <tr id="yaku9">
       <td>ストレートフラッシュ</td>
       <td class="yaku-bet" id="bet9"><?php print $bet * 50; ?></td>
     </tr>
-    <tr>
+    <tr id="yaku8">
       <td>フォーカード</td>
       <td class="yaku-bet" id="bet8"><?php print $bet * 20; ?></td>
     </tr>
-    <tr>
+    <tr id="yaku7">
       <td>フルハウス</td>
       <td class="yaku-bet" id="bet7"><?php print $bet * 10; ?></td>
     </tr>
   </table>
   <table class="table-right">
-    <tr>
+    <tr id="yaku6">
       <td>フラッシュ</td>
       <td class="yaku-bet" id="bet6"><?php print $bet * 5; ?></td>
     </tr>
-    <tr>
+    <tr id="yaku5">
       <td>ストレート</td>
       <td class="yaku-bet" id="bet5"><?php print $bet * 4; ?></td>
     </tr>
-    <tr>
+    <tr id="yaku4">
       <td>スリーカード</td>
       <td class="yaku-bet" id="bet4"><?php print $bet * 3; ?></td>
     </tr>
-    <tr>
+    <tr id="yaku3">
       <td>ツーペア</td>
       <td class="yaku-bet" id="bet3"><?php print $bet * 2; ?></td>
     </tr>
-    <tr>
+    <tr id="yaku2">
       <td>ペア</td>
       <td class="yaku-bet" id="bet2"><?php print $bet; ?></td>
     </tr>

@@ -120,64 +120,37 @@ pg_query($sql);
 switch(handRank($a)):
   case 2:
     print "ペアです！";
-    print "<script type=\"text/javascript\">";
-    print "highlight({handRank($a)});";
-    print "</script>";
     break;
   case 3:
     print "ツーペアです！";
-    print "<script type=\"text/javascript\">";
-    print "highlight({handRank($a)});";
-    print "</script>";
     $win *= 2;
     break;
   case 4:
     print "スリーカードです！";
-    print "<script type=\"text/javascript\">";
-    print "highlight({handRank($a)});";
-    print "</script>";
     $win *= 3;
     break;
   case 5:
     print "ストレートです！";
-    print "<script type=\"text/javascript\">";
-    print "highlight({handRank($a)});";
-    print "</script>";
     $win *= 4;
     break;
   case 6:
     print "フラッシュです！";
-    print "<script type=\"text/javascript\">";
-    print "highlight({handRank($a)});";
-    print "</script>";
     $win *= 5;
     break;
   case 7:
     print "フルハウスです！";
-    print "<script type=\"text/javascript\">";
-    print "highlight({handRank($a)});";
-    print "</script>";
     $win *= 10;
     break;
   case 8:
     print "フォーカードです！";
-    print "<script type=\"text/javascript\">";
-    print "highlight({handRank($a)});";
-    print "</script>";
     $win *= 20;
     break;
   case 9:
     print "ストレートフラッシュです！";
-    print "<script type=\"text/javascript\">";
-    print "highlight({handRank($a)});";
-    print "</script>";
     $win *= 50;
     break;
   case 10:
     print "ロイヤルストレートフラッシュです！";
-    print "<script type=\"text/javascript\">";
-    print "highlight({handRank($a)});";
-    print "</script>";
     $win *= 100;
     break;
   case 11:
@@ -185,9 +158,6 @@ switch(handRank($a)):
     break;
   case 12:
     print "ロイヤルストレートスライムです！";
-    print "<script type=\"text/javascript\">";
-    print "highlight({handRank($a)});";
-    print "</script>";
     $win *= 500;
     break;
 endswitch ?>
@@ -226,7 +196,7 @@ endswitch ?>
 
 <script>
 function highlight(a) {
-  var v = document.getElementById(`yaku${a}`);
+  var v = document.getElementById(`yaku{a}`);
   v.className += "highlight";
 }
 </script>

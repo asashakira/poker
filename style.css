@@ -185,4 +185,7 @@ button, input[type=checkbox], input[type=radio] {
   text-align: center;
 }
 
+.highlight {
+  color: yellow;
+}
 
