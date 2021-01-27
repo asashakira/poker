@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
   <script src="scripts.js"></script>
+  <script src="https://kit.fontawesome.com/813ca13dc0.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -23,34 +24,35 @@ for($i = 0; $i < 52; $i++) {
   swap($a[$i], $a[$r]);
 }
 
+/*
 @$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
 if($con == false) {
   print "Database Connection Error";
   exit;
 }
+ */
 
 if(isset($_POST['win'])) {
   $user = $_POST['user'];
   $coin = $_POST['coin'] + $_POST['win'];
   pg_query("update passdb set coin = '$coin' where uname = '$user'");
 }
+
 //$user = $_POST['user'];
 $user = "akira";
 $sql = "select coin from passdb where uname = '$user'";
-@$res = pg_query($sql);
+//@$res = pg_query($sql);
 $coin = 10000;
-$coin = pg_fetch_result($res, 0, 0);
+//$coin = pg_fetch_result($res, 0, 0);
 $bet = 100;
 $coin -= $bet;
 ?>
 
-<div class="navbar">
-  <ul>
-    <li><a href="http://133.54.224.240/penshu4_2020/67190272/last/main.php">Home</a></li>
-    <li style="float: center; left: -50%;"><span>POKER</span></li>
-    <li style="float: right"><span>user: <?php print $user; ?></span></li>
-  </ul>
-</div>
+<ul class="navbar">
+  <li style="padding-left: 30px"><a href="http://133.54.224.240/penshu4_2020/67190272/last/main.php">Home</a></li>
+  <li><span class="title">P<i class="fas fa-heart heart"></i>KER</span></li>
+  <li style="padding-right: 30px"><span>user: <?php print $user; ?></span></li>
+</ul>
 
 <div class="yaku-table">
   <table class="table-left">

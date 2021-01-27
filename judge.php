@@ -6,6 +6,7 @@
   <title>Poker</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/813ca13dc0.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -25,6 +26,12 @@ $bet = $_POST['bet'];
 $coin = $_POST['coin'];
 $win = $bet;
 ?>
+
+<ul class="navbar">
+  <li style="padding-left: 30px"><a href="http://133.54.224.240/penshu4_2020/67190272/last/main.php">Home</a></li>
+  <li><span class="title">P<i class="fas fa-heart heart"></i>KER</span></li>
+  <li style="padding-right: 30px"><span>user: <?php print $user; ?></span></li>
+</ul>
 
 <div class="yaku-table">
   <table class="table-left">

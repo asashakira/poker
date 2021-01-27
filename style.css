@@ -29,22 +29,21 @@ button, input[type=checkbox], input[type=radio] {
 
 .navbar {
   width: 100%;
-}
-
-.navbar ul {
+  height: 65px;
+  display: flex;
   list-style-type: none;
   margin: 0;
-  padding: 0 100px;
+  padding: 0;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.7);
   border-bottom: 3px solid blue; 
-}
-
-.navbar li {
-  float: left;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 0;
 }
 
 .navbar li a {
+  height: 100%;
   display: block;
   color: white;
   text-align: center;
@@ -62,6 +61,16 @@ button, input[type=checkbox], input[type=radio] {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.heart {
+  font-size: 1.7rem;
+  color: red;
 }
 
 .cards {
@@ -90,9 +99,7 @@ button, input[type=checkbox], input[type=radio] {
   background-color: rgba(0, 0, 0, 0.7);
   font-size: 1.5rem;
   color: white;
-  margin: 0 10px;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin: 5px;
   padding: 10px 50px;
   width: 210px;
   border: none;
@@ -109,6 +116,7 @@ button, input[type=checkbox], input[type=radio] {
   padding: 10px 0;
   background-color: rgba(0, 0, 0, 0.5);
   border: 3px solid white; 
+  border-radius: 10px;
 }
 
 .bottom-wrap {
@@ -129,6 +137,7 @@ button, input[type=checkbox], input[type=radio] {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   border: 3px solid green; 
+  border-radius: 10px;
 }
 
 .wooper-detail {
@@ -137,30 +146,34 @@ button, input[type=checkbox], input[type=radio] {
   text-align: right;
   background-color: rgba(0, 0, 0, 0.5);
   border: 3px solid green; 
+  border-radius: 10px;
 }
 
 .wooper-btn {
   display: flex;
   flex-direction: column;
-  margin-left: -15px;
+  margin-left: -20px;
   margin-bottom: -50px;
 }
 
 .bet-change {
-  width: 40px;
-  height: 40px;
-  margin: 5px;
-  font-size: 2rem;
+  width: 35px;
+  height: 35px;
+  margin: 2px;
+  font-size: 1.7rem;
+  border-radius: 10px;
 }
 
 .yaku-table {
   width: 1200px;
   font-size: 1.5rem;
   margin: 10px;
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
   border: 3px solid green; 
+  border-radius: 10px;
 }
 
 .table-left {
