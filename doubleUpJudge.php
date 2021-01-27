@@ -27,7 +27,7 @@ $d = $a[$b] % 13;
 $user = $_POST['user'];
 $coin = $_POST['coin'];
 $bet = $_POST['bet'];
-$win = $bet * 2;
+$win = $bet;
 ?>
 
 <ul class="navbar">
@@ -103,6 +103,7 @@ $win = $bet * 2;
 <div class="text-wrap">
 <?php if($d > $c): ?>
   ダブルアップ成功です！<br>
+<?php $win *= 2; ?>
 <?php print $win; ?>枚の  コインが当たりました．<br>
   <br>
   成功すると  コインが2倍になります．<br>
