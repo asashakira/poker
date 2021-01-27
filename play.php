@@ -23,13 +23,11 @@ for($i = 0; $i < 52; $i++) {
   swap($a[$i], $a[$r]);
 }
 
-/*
 @$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
 if($con == false) {
   print "Database Connection Error";
   exit;
 }
- */
 
 if(isset($_POST['win'])) {
   $user = $_POST['user'];
@@ -39,16 +37,17 @@ if(isset($_POST['win'])) {
 //$user = $_POST['user'];
 $user = "akira";
 $sql = "select coin from passdb where uname = '$user'";
-//@$res = pg_query($sql);
+@$res = pg_query($sql);
 $coin = 10000;
-//$coin = pg_fetch_result($res, 0, 0);
-$coin -= 100;
+$coin = pg_fetch_result($res, 0, 0);
 $bet = 100;
+$coin -= $bet;
 ?>
 
 <div class="navbar">
   <ul>
     <li><a href="http://133.54.224.240/penshu4_2020/67190272/last/main.php">Home</a></li>
+    <li style="float: center; left: -50%;"><span>POKER</span></li>
     <li style="float: right"><span>user: <?php print $user; ?></span></li>
   </ul>
 </div>
@@ -125,6 +124,10 @@ $bet = 100;
     <button id="change">くばる</button>
   </div>
 </form>
+
+<div class="text-wrap">
+掛け金を決め　かえたいカードにチェックを入れ　くばるを押してください．
+</div>
 
 <div class="bottom-wrap">
   <div class="wooper">
