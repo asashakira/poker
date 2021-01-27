@@ -12,16 +12,14 @@
 <?php
 include 'poker.php';
 
-/*
 @$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
 if($con == false) {
   print "Database Connection Error";
   exit;
 }
- */
 
 $a = $_POST['card'];
-//$a = array(0, 1, 2, 3, 4);
+$a = array(8, 9, 10, 11, 12);
 $user = $_POST['user'];
 $bet = $_POST['bet'];
 $coin = $_POST['coin'];
@@ -93,15 +91,16 @@ $win = $bet;
 <?php
 $win = 0;
 $sql = "update passdb set coin = '$coin' where uname = '$user'";
-//pg_query($sql);
+pg_query($sql);
 ?>
     残念でした！</br>
     もういちど　ポーカーを遊びますか？
   <div class="btn-wrap">
-    <form action="play.php">
+    <form action="play.php" method="post">
+      <input type="hidden" name="user" value=<?php print $user; ?>>
       <button type="submit">はい</button>
     </form>
-    <form action="play.php">
+    <form action="http://133.54.224.240/penshu4_2020/67190272/last/main.php">
       <button type="submit">いいえ</button>
     </form>
   </div> <!-- end btn-wrap -->
@@ -168,6 +167,8 @@ endswitch ?>
   </form>
   <form action="play.php" method="post">
     <input type="hidden" name="user" value="<?php print $user; ?>">
+    <input type="hidden" name="coin" value="<?php print $coin; ?>">
+    <input type="hidden" name="win" value="<?php print $win; ?>">
     <button type="submit">いいえ</button>
   </form>
 </div> <!-- btn-wrap end -->
@@ -181,7 +182,7 @@ endswitch ?>
   </div> <!-- coin-wrap end -->
   <div class="wooper">
     <div class="wooper-title">WIN</div>
-    <div class="wooper-detail" id="bet"><?php print $bet; ?></div>
+    <div class="wooper-detail" id="bet"><?php print $win; ?></div>
   </div> <!-- bet-wrap end -->
 </div> <!-- bottom-wrap end -->
 

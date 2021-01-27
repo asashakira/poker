@@ -23,20 +23,22 @@ for($i = 0; $i < 52; $i++) {
   swap($a[$i], $a[$r]);
 }
 
-/*
 @$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
 if($con == false) {
   print "Database Connection Error";
   exit;
 }
- */
 
+if(isset($_POST['win'])) {
+  $user = $_POST['user'];
+  $coin = $_POST['coin'] + $_POST['win'];
+  pg_query("update passdb set coin = '$coin' where uname = '$user'");
+}
 //$user = $_POST['user'];
-$user = "kkk";
+$user = "akira";
 $sql = "select coin from passdb where uname = '$user'";
-//@$res = pg_query($sql);
-//$coin = pg_fetch_result($res, 0, 0);
-$coin = 10000;
+@$res = pg_query($sql);
+$coin = pg_fetch_result($res, 0, 0);
 $coin -= 100;
 $bet = 100;
 ?>
