@@ -23,17 +23,20 @@ for($i = 0; $i < 52; $i++) {
   swap($a[$i], $a[$r]);
 }
 
-
-$user = "kkk";
+/*
 @$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
 if($con == false) {
   print "Database Connection Error";
   exit;
 }
+ */
 
+//$user = $_POST['user'];
+$user = "kkk";
 $sql = "select coin from passdb where uname = '$user'";
-@$res = pg_query($sql);
-$coin = pg_fetch_result($res, 0, 0);
+//@$res = pg_query($sql);
+//$coin = pg_fetch_result($res, 0, 0);
+$coin = 10000;
 $coin -= 100;
 $bet = 100;
 ?>
@@ -112,22 +115,18 @@ $bet = 100;
 </form>
 
 <div class="bottom-wrap">
-  <div class="money-wrap">
-    <table>
-      <tr>
-        <td>COIN</td>
-        <td class="td-center"><span id="coin"><?php print $coin; ?></span></td>
-      </tr>
-      <tr>
-        <td>BET</td>
-        <td "td-center">
-          <button onclick="minusBet()">-</button>
-          <span id="bet"><?php print $bet; ?></span>
-          <button onclick="plusBet()">+</button>
-        </td>
-      </tr>
-    </table>
-  </div> <!-- money-wrap end -->
+  <div class="wooper">
+    <div class="wooper-title">COIN</div>
+    <div class="wooper-detail" id="coin"><?php print $coin; ?></div>
+  </div> <!-- coin-wrap end -->
+  <div class="wooper">
+    <div class="wooper-title">BET</div>
+    <div class="wooper-detail" id="bet"><?php print $bet; ?></div>
+  </div> <!-- bet-wrap end -->
+  <div class="wooper-btn">
+    <button onclick="plusBet()">+</button>
+    <button onclick="minusBet()">-</button>
+  </div>
 </div> <!-- bottom-wrap end -->
 
 

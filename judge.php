@@ -12,11 +12,13 @@
 <?php
 include 'poker.php';
 
+/*
 @$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
 if($con == false) {
   print "Database Connection Error";
   exit;
 }
+ */
 
 $a = $_POST['card'];
 //$a = array(0, 1, 2, 3, 4);
@@ -85,14 +87,13 @@ $win = $bet;
   </div> <!-- cards div end -->
 </div> <!-- play div end -->
 
-<div class="bottom-wrap">
 <div class="text-wrap">
 <?php switch(handRank($a)): ?>
 <?php case 1: ?>
 <?php
 $win = 0;
 $sql = "update passdb set coin = '$coin' where uname = '$user'";
-@$res = pg_query($sql);
+//pg_query($sql);
 ?>
     残念でした！</br>
     もういちど　ポーカーを遊びますか？
@@ -155,37 +156,33 @@ switch(handRank($a)):
 endswitch ?>
 <br>
 <?php print $win; ?>枚のコインが　当たりました．</br>
-  <br>
   成功すると <?php print($win * 2); ?>枚になります．</br>
   ダブルアップに挑戦しますか？
-  <div class="btn-wrap">
-    <form action="doubleUp.php" method="post">
-      <input type="hidden" name="user" value="<?php print $user; ?>">
-      <input type="hidden" name="coin" value="<?php print $coin; ?>">
-      <input type="hidden" name="bet" value="<?php print $win; ?>">
-      <button type="submit">はい</button>
-    </form>
-    <form action="play.php" method="post">
-      <input type="hidden" name="user" value="<?php print $user; ?>">
-      <button type="submit">いいえ</button>
-    </form>
-  </div> <!-- btn-wrap end -->
 </div> <!-- end text-wrap -->
+<div class="btn-wrap">
+  <form action="doubleUp.php" method="post">
+    <input type="hidden" name="user" value="<?php print $user; ?>">
+    <input type="hidden" name="coin" value="<?php print $coin; ?>">
+    <input type="hidden" name="bet" value="<?php print $win; ?>">
+    <button type="submit">はい</button>
+  </form>
+  <form action="play.php" method="post">
+    <input type="hidden" name="user" value="<?php print $user; ?>">
+    <button type="submit">いいえ</button>
+  </form>
+</div> <!-- btn-wrap end -->
 
 <?php endswitch ?>
 
-  <div class="money-wrap">
-    <table>
-      <tr>
-        <td>COIN</td>
-        <td class="td-center" id="coin"><?php print $coin; ?></td>
-      </tr>
-      <tr>
-        <td>WIN</td>
-        <td class="td-center" id="bet"><?php print $win; ?></td>
-      </tr>
-    </table>
-  </div> <!-- money-wrap end -->
+<div class="bottom-wrap">
+  <div class="wooper">
+    <div class="wooper-title">COIN</div>
+    <div class="wooper-detail" id="coin"><?php print $coin; ?></div>
+  </div> <!-- coin-wrap end -->
+  <div class="wooper">
+    <div class="wooper-title">WIN</div>
+    <div class="wooper-detail" id="bet"><?php print $bet; ?></div>
+  </div> <!-- bet-wrap end -->
 </div> <!-- bottom-wrap end -->
 
 </body>

@@ -22,6 +22,7 @@ for($i = 0; $i < 52; $i++) {
   swap($a[$i], $a[$r]);
 }
 
+$user = $_POST['user'];
 $coin = $_POST['coin'];
 $bet = $_POST['bet'];
 ?>
@@ -96,6 +97,7 @@ $bet = $_POST['bet'];
 <?php
   for($i = 0; $i < 5; $i++)
     print "<input id=\"hidden{$i}\" type=\"hidden\" name=\"card[]\" value={$a[$i]}>\n";
+  print "<input type=\"hidden\" name=\"user\" value={$user}>\n";
   print "<input type=\"hidden\" name=\"coin\" value={$coin}>\n";
   print "<input type=\"hidden\" name=\"bet\" value={$bet}>\n";
 ?>
@@ -104,23 +106,20 @@ $bet = $_POST['bet'];
   </div>
 </form>
 
+<div class="text-wrap">
+オープンしている　カードより<br>
+強いカードを　右の4枚から　選んでください
+</div>
+
 <div class="bottom-wrap">
-  <div class="text-wrap">
-  オープンしている　カードより<br>
-  強いカードを　右の4枚から　選んでください
-  </div>
-  <div class="money-wrap">
-    <table>
-      <tr>
-        <td>COIN</td>
-        <td class="td-center" id="coin"><?php print $coin; ?></td>
-      </tr>
-      <tr>
-        <td>BET</td>
-        <td class="td-center" id="bet"><?php print $bet; ?></td>
-      </tr>
-    </table>
-  </div> <!-- money-wrap end -->
+  <div class="wooper">
+    <div class="wooper-title">COIN</div>
+    <div class="wooper-detail" id="coin"><?php print $coin; ?></div>
+  </div> <!-- coin-wrap end -->
+  <div class="wooper">
+    <div class="wooper-title">BET</div>
+    <div class="wooper-detail" id="bet"><?php print $bet; ?></div>
+  </div> <!-- bet-wrap end -->
 </div> <!-- bottom-wrap end -->
 
 </body>

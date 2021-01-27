@@ -4,6 +4,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("img/red.jpg");
+  background-size: cover;
+  color: white;
+  font-size: 1.5rem;
 }
 
 a {
@@ -21,7 +25,7 @@ button, input[type=checkbox], input[type=radio] {
 
 .cards {
   display: flex;
-  border: 3px solid green; 
+  margin-top: 20px;
 }
 
 .card {
@@ -29,75 +33,89 @@ button, input[type=checkbox], input[type=radio] {
   flex-direction: column;
   align-items: center;
   margin: 0 25px;
-  border: 3px solid red; 
 }
 
 .card img {
-  width: 125px;
+  width: 170px;
   padding-bottom: 10px;
 }
 
 .btn-wrap {
   display: flex;
   justify-content: center;
-  border: 3px solid green; 
 }
 
 .btn-wrap button {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 1.5rem;
   color: white;
-  margin: 4px 2px;
+  margin: 0 10px;
+  margin-top: 30px;
+  margin-bottom: 10px;
   padding: 10px 50px;
-  width: 170px;
+  width: 200px;
   border: none;
   outline: none;
   border-radius: 18px;
 }
 
 .text-wrap {
+  width: 1200px;
   text-align: center;
   margin: 20px;
-  border: 3px solid blue; 
+  margin-bottom: 0;
+  padding: 10px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 3px solid white; 
 }
 
 .bottom-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid green; 
 }
 
-.money-wrap {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-  width: 200px;
-  border: 3px solid green; 
+.wooper {
+  margin: 30px;
+  width: 400px;
 }
 
-.td-center {
+.wooper-title {
+  font-size: 1rem;
+  width: 50px;
+  padding: 10px;
   text-align: center;
-  padding-left: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 3px solid green; 
 }
 
-.coin {
-  margin: 30px;
-  border: 3px solid blue; 
+.wooper-detail {
+  font-size: 2rem;
+  padding: 10px;
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 3px solid green; 
 }
 
-.bet {
-  margin: 30px;
-  border: 3px solid blue; 
+.wooper-btn {
+  display: flex;
+  flex-direction: column;
+  margin-left: -15px;
+  margin-bottom: -50px;
 }
-
 
 .yaku-table {
-  height: 140px;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  width: 1200px;
+  font-size: 1.5rem;
+  margin: 10px;
   display: flex;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
   border: 3px solid green; 
+}
+
+.table-left {
+  padding-right: 100px;
 }
 
 .yaku-bet {
@@ -105,7 +123,4 @@ button, input[type=checkbox], input[type=radio] {
   text-align: center;
 }
 
-.table-left {
-  margin-right: 50px;
-}
 

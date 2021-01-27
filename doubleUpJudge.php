@@ -13,11 +13,20 @@
 <?php
 include 'poker.php';
 
+/*
+@$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
+if($con == false) {
+  print "Database Connection Error";
+  exit;
+}
+ */
+
 $a = $_POST['card'];
 $b = $_POST['radio'];
 $c = $a[0] % 13;
 $d = $a[$b] % 13;
 
+$user = $_POST['user'];
 $coin = $_POST['coin'];
 $bet = $_POST['bet'];
 $win = $bet * 2;
@@ -73,12 +82,11 @@ $win = $bet * 2;
 <div class="play">
   <div class="cards">
 <?php
-    print "<div class=\"card\">\n";
-    print "<img id=\"card0\" src=\"img/cards/{$a[0]}.png\">\n";
-    print "</div>\n";
-    for($i = 1; $i < 5; $i++) {
+    for($i = 0; $i < 5; $i++) {
       print "<div class=\"card\">\n";
-      if($i == $b)
+      if($i == 0)
+        print "<img id=\"card0\" src=\"img/cards/{$a[0]}.png\">\n";
+      else if($i == $b)
         print "<img id=\"card{$i}\" src=\"img/cards/{$a[$i]}.png\">\n";
       else
         print "<img id=\"card{$i}\" src=\"img/cards/yellow_back.png\">\n";
@@ -88,7 +96,6 @@ $win = $bet * 2;
   </div> <!-- cards div end -->
 </div> <!-- play div end -->
 
-<div class="bottom-wrap">
 <div class="text-wrap">
 <?php if($d > $c): ?>
   ダブルアップ成功です！<br>
@@ -96,57 +103,64 @@ $win = $bet * 2;
   <br>
   成功すると  コインが2倍になります．<br>
   ダブルアップに挑戦しますか？
-  <div class="btn-wrap">
-    <form action="doubleUp.php" method="post">
-      <input type="hidden" name="coin" value=<?php print $coin; ?>>
-      <input type="hidden" name="bet" value=<?php print $win; ?>>
-      <button type="submit">はい</button>
-    </form>
-    <form action="play.php">
-      <button type="submit">いいえ</button>
-    </form>
-  </div> <!-- btn-wrap div end -->
 </div> <!-- text-wrap div end -->
+<div class="btn-wrap">
+  <form action="doubleUp.php" method="post">
+    <input type="hidden" name="user" value=<?php print $user; ?>>
+    <input type="hidden" name="coin" value=<?php print $coin; ?>>
+    <input type="hidden" name="bet" value=<?php print $win; ?>>
+    <button type="submit">はい</button>
+  </form>
+  <form action="play.php" method="post">
+    <input type="hidden" name="user" value=<?php print $user; ?>>
+    <button type="submit">いいえ</button>
+  </form>
+</div> <!-- btn-wrap div end -->
 <?php elseif($d < $c): ?>
+<?php 
+$sql = "update passdb set coin = '$coin' where uname = '$user'";
+//pg_query($sql);
+?>
   残念でした！<br>
   ポーカーを続けますか？
 </div> <!-- text-wrap div end -->
 <div class="btn-wrap">
-  <form action="play.php">
+  <form action="play.php" method="post">
+    <input type="hidden" name="user" value=<?php print $user; ?>>
     <button type="submit">はい</button>
   </form>
-  <form action="play.php">
+  <form action="main.php" method="post">
+    <input type="hidden" name="user" value=<?php print $user; ?>>
     <button type="submit">いいえ</button>
   </form>
 </div>
 <?php else: ?>
 </div> <!-- text-wrap div end -->
   引き分け！<br>
-  ダブルアップに挑戦しますか？
+  もう一回　ダブルアップに挑戦しますか？
 <div class="btn-wrap">
   <form action="doubleUp.php" method="post">
+    <input type="hidden" name="user" value=<?php print $user; ?>>
     <input type="hidden" name="coin" value=<?php print $coin; ?>>
     <input type="hidden" name="bet" value=<?php print $bet; ?>>
     <button type="submit">はい</button>
   </form>
-  <form action="play.php">
+  <form action="play.php" method="post">
+    <input type="hidden" name="user" value=<?php print $user; ?>>
     <button type="submit">いいえ</button>
   </form>
 </div>
 <?php endif ?>
 
-  <div class="money-wrap">
-    <table>
-      <tr>
-        <td>COIN</td>
-        <td class="td-center" id="coin"><?php print $coin; ?></td>
-      </tr>
-      <tr>
-        <td>BET</td>
-        <td class="td-center" id="bet"><?php print $bet; ?></td>
-      </tr>
-    </table>
-  </div> <!-- money-wrap end -->
+<div class="bottom-wrap">
+  <div class="wooper">
+    <div class="wooper-title">COIN</div>
+    <div class="wooper-detail" id="coin"><?php print $coin; ?></div>
+  </div> <!-- coin-wrap end -->
+  <div class="wooper">
+    <div class="wooper-title">WIN</div>
+    <div class="wooper-detail" id="bet"><?php print $bet; ?></div>
+  </div> <!-- bet-wrap end -->
 </div> <!-- bottom-wrap end -->
 
 </body>
