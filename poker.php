@@ -111,7 +111,17 @@ function royal($a) {
   return true;
 }
 
+function royalSlime($a) {
+  if(!royal($a))
+    return false;
+  $b = (int)($a[0] / 13);
+  if($b != 3)
+    return false;
+  return true;
+}
+
 function handRank($a) {
+  if(royalSlime($a))    return 12;
   if(royal($a))         return 10;
   if(straightFlush($a)) return 9;
   if(quads($a))         return 8;

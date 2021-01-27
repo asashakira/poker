@@ -20,7 +20,7 @@ if($con == false) {
 }
 
 $a = $_POST['card'];
-$a = array(8, 9, 10, 11, 12);
+//$a = array(47, 48, 49, 50, 51);
 $user = $_POST['user'];
 $bet = $_POST['bet'];
 $coin = $_POST['coin'];
@@ -158,6 +158,7 @@ switch(handRank($a)):
     break;
   case 12:
     print "ロイヤルストレートスライムです！";
+    $win *= 500;
     break;
 endswitch ?>
 <br>

@@ -135,7 +135,7 @@ pg_query($sql);
     <input type="hidden" name="user" value=<?php print $user; ?>>
     <button type="submit">はい</button>
   </form>
-  <form action="main.php" method="post">
+  <form action="http://133.54.224.240/penshu4_2020/67190272/last/main.php" method="post">
     <input type="hidden" name="user" value=<?php print $user; ?>>
     <button type="submit">いいえ</button>
   </form>
