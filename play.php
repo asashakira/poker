@@ -23,11 +23,13 @@ for($i = 0; $i < 52; $i++) {
   swap($a[$i], $a[$r]);
 }
 
+/*
 @$con = pg_connect("host=kite.cs.miyazaki-u.ac.jp dbname=endb2020 user=enuser2020 password=enpass2020");
 if($con == false) {
   print "Database Connection Error";
   exit;
 }
+ */
 
 if(isset($_POST['win'])) {
   $user = $_POST['user'];
@@ -37,11 +39,19 @@ if(isset($_POST['win'])) {
 //$user = $_POST['user'];
 $user = "akira";
 $sql = "select coin from passdb where uname = '$user'";
-@$res = pg_query($sql);
-$coin = pg_fetch_result($res, 0, 0);
+//@$res = pg_query($sql);
+$coin = 10000;
+//$coin = pg_fetch_result($res, 0, 0);
 $coin -= 100;
 $bet = 100;
 ?>
+
+<div class="navbar">
+  <ul>
+    <li><a href="http://133.54.224.240/penshu4_2020/67190272/last/main.php">Home</a></li>
+    <li style="float: right"><span>user: <?php print $user; ?></span></li>
+  </ul>
+</div>
 
 <div class="yaku-table">
   <table class="table-left">
@@ -95,8 +105,8 @@ $bet = 100;
 <?php
     for($i = 0; $i < 5; $i++) {
       print "<div class=\"card\">\n";
-      print "<img id=\"card{$i}\" src=\"img/cards/{$a[$i]}.png\">\n";
-      print "<input type=\"checkbox\" name=\"check[]\" value={$i}> かえる\n";
+      print "<label for=\"img{$i}\"><img class=\"pointer-active\" id=\"card{$i}\" src=\"img/cards/{$a[$i]}.png\"></label>\n";
+      print "<input id=\"img{$i}\" type=\"checkbox\" name=\"check[]\" value={$i}> かえる\n";
       print "</div>\n";
     }
 ?>
@@ -126,8 +136,8 @@ $bet = 100;
     <div class="wooper-detail" id="bet"><?php print $bet; ?></div>
   </div> <!-- bet-wrap end -->
   <div class="wooper-btn">
-    <button onclick="plusBet()">+</button>
-    <button onclick="minusBet()">-</button>
+    <button class="bet-change" onclick="plusBet()">+</button>
+    <button class="bet-change" onclick="minusBet()">-</button>
   </div>
 </div> <!-- bottom-wrap end -->
 

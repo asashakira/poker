@@ -23,6 +23,47 @@ button, input[type=checkbox], input[type=radio] {
   cursor: pointer;
 }
 
+.pointer-active {
+  cursor: pointer;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 100px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-bottom: 3px solid blue; 
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar li a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar li span {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
 .cards {
   display: flex;
   margin-top: 20px;
@@ -57,6 +98,7 @@ button, input[type=checkbox], input[type=radio] {
   border: none;
   outline: none;
   border-radius: 18px;
+  border: 3px solid white; 
 }
 
 .text-wrap {
@@ -102,6 +144,13 @@ button, input[type=checkbox], input[type=radio] {
   flex-direction: column;
   margin-left: -15px;
   margin-bottom: -50px;
+}
+
+.bet-change {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  font-size: 2rem;
 }
 
 .yaku-table {

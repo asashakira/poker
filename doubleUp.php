@@ -83,11 +83,11 @@ $bet = $_POST['bet'];
     print "</div>\n";
     for($i = 1; $i < 5; $i++) {
       print "<div class=\"card\">\n";
-      print "<img id=\"card{$i}\" src=\"img/cards/yellow_back.png\">\n";
+      print "<label for=\"img{$i}\"><img id=\"card{$i}\" src=\"img/cards/{$a[0]}.png\"></label>\n";
       if($i == 1)
-        print "<input type=\"radio\" name=\"radio\" value={$i} checked>\n";
+        print "<input id=\"img{$i}\" type=\"radio\" name=\"radio\" value={$i} checked>\n";
       else
-        print "<input type=\"radio\" name=\"radio\" value={$i}>\n";
+        print "<input id=\"img{$i}\" type=\"radio\" name=\"radio\" value={$i}>\n";
       print "</div>\n";
     }
 ?>
