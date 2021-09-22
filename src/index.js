@@ -22,10 +22,10 @@ function RankTable() {
     "ロイヤルストレートスライム",
   ];
 
-  return (
-    <div className="grid">
-    </div>
-  );
+  let html = "<div></div>";
+  for (let i = 0; i < 10; i++) {
+  }
+  return html;
 }
 
 class Game extends React.Component {
