@@ -22,10 +22,16 @@ function RankTable() {
     "ロイヤルストレートスライム",
   ];
 
-  let html = "<div></div>";
-  for (let i = 0; i < 10; i++) {
+  const items = [];
+  for (let i = 9; i >= 0; i--) {
+    items.push(
+      <div className="rank">
+        <div className="rank-name">{rankNames[i]}</div>
+        <div className="rank-coins">1000</div>
+      </div>
+    );
   }
-  return html;
+  return items;
 }
 
 class Game extends React.Component {
