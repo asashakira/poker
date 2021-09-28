@@ -1,29 +1,67 @@
 
 const RankTable = () => {
-  const rankNames = [
-    "ツーペア",
-    "スリーカード",
-    "ストレート",
-    "フラッシュ",
-    "フルハウス",
-    "フォーカード",
-    "ストレートフラッシュ",
-    "ファイブカード",
-    "ロイヤルストレートフラッシュ",
-    "ロイヤルストレートスライム",
+  const ranks = [
+    {
+      id: 0,
+      text: "ロイヤルストレートスライム",
+      bet: 100,
+    },
+    {
+      id: 1,
+      text: "ロイヤルストレートフラッシュ",
+      bet: 100,
+    },
+    {
+      id: 2,
+      text: "ファイブカード",
+      bet: 100,
+    },
+    {
+      id: 3,
+      text: "ストレートフラッシュ",
+      bet: 100,
+    },
+    {
+      id: 4,
+      text: "フォーカード",
+      bet: 100,
+    },
+    {
+      id: 5,
+      text: "フルハウス",
+      bet: 100,
+    },
+    {
+      id: 6,
+      text: "フラッシュ",
+      bet: 100,
+    },
+    {
+      id: 7,
+      text: "ストレート",
+      bet: 100,
+    },
+    {
+      id: 8,
+      text: "スリーカード",
+      bet: 100,
+    },
+    {
+      id: 9,
+      text: "ツーペア",
+      bet: 100,
+    },
   ];
 
-  const table = [];
-  for (let i = 9; i >= 0; i--) {
-    table.push(
-      <div className="rank">
-        <div className="rank-name">{rankNames[i]}</div>
-        <div className="rank-coins">1000</div>
-      </div>
-    );
-  }
   return (
-    <div id="rank-table"> {table} </div>
+    <div id="rank-table">
+      {ranks.map((rank) => (
+        <div key={rank.id} className="rank">
+          <div className="rank-name">{rank.text}</div>
+          <div className="rank-coins">{rank.bet}</div>
+        </div>
+      ))}
+    </div>
   );
 }
 
