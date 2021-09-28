@@ -2,14 +2,15 @@
 const Card = ({ card }) => {
   return (
     <div className="card">
-      <img src={`/images/cards/${card}.png`} alt="" />
+      <label htmlFor={`img${card}`}>
+        <img className="pointer-active" id="" src={`/images/cards/${card}.png`} alt="" />
+      </label>
+      <input id={`img${card}`} type="checkbox" />かえる
     </div>
   );
 }
 
-const Cards = () => {
-  const cards = [0, 1, 2, 3, 4];
-
+const Cards = ({ cards }) => {
   return (
     <div className="cards">
       <Card card={cards[0]}/>

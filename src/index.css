@@ -9,25 +9,20 @@ body {
   background-size: cover;
 }
 
+a {
+  text-decoration: none;
+}
+
+button, input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
   font-size: 1.5rem;
-}
-
-a {
-  text-decoration: none;
-}
-
-p {
-  margin: 0;
-  padding: 0;
-}
-
-button, input[type=checkbox], input[type=radio] {
-  cursor: pointer;
 }
 
 .pointer-active {
@@ -61,8 +56,7 @@ button, input[type=checkbox], input[type=radio] {
   flex-wrap: wrap;
   justify-content: center;
 
-  width: 80%;
-  max-width: 720px;
+  width: 1000px;
   height: 200px;
   margin-top: 10px;
   padding: 0 5%;
@@ -75,14 +69,11 @@ button, input[type=checkbox], input[type=radio] {
 .rank {
   display: flex;
   align-items: center;
-  margin: 0 20px;
+  margin: 0 30px;
 }
 
 .rank-name {
   width: 90%;
-}
-
-.rank-coins {
 }
 
 .cards {
@@ -94,12 +85,16 @@ button, input[type=checkbox], input[type=radio] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 25px;
+  margin: 0 20px;
 }
 
 .card img {
   width: 170px;
   padding-bottom: 10px;
+}
+
+.highlight {
+  color: yellow;
 }
 
 .btn-wrap {
@@ -121,7 +116,7 @@ button, input[type=checkbox], input[type=radio] {
 }
 
 .text-wrap {
-  width: 1200px;
+  width: 1000px;
   text-align: center;
   margin: 20px;
   margin-bottom: 0;
@@ -131,20 +126,21 @@ button, input[type=checkbox], input[type=radio] {
   border-radius: 10px;
 }
 
-.bottom-wrap {
+.info-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 1000px;
 }
 
-.wooper {
-  margin: 30px;
-  width: 400px;
+.info {
+  margin: 10px;
+  width: 50%;
 }
 
-.wooper-title {
+.info-title {
   font-size: 1rem;
-  width: 50px;
+  width: 20%;
   padding: 10px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
@@ -152,7 +148,7 @@ button, input[type=checkbox], input[type=radio] {
   border-radius: 10px;
 }
 
-.wooper-detail {
+.info-detail {
   font-size: 2rem;
   padding: 10px;
   text-align: right;
@@ -161,7 +157,7 @@ button, input[type=checkbox], input[type=radio] {
   border-radius: 10px;
 }
 
-.wooper-btn {
+.info-btn {
   display: flex;
   flex-direction: column;
   margin-left: -20px;
@@ -174,8 +170,4 @@ button, input[type=checkbox], input[type=radio] {
   margin: 2px;
   font-size: 1.7rem;
   border-radius: 10px;
-}
-
-.highlight {
-  color: yellow;
 }
