@@ -1,27 +1,18 @@
-import Cards from './Cards'
-import Button from './Button'
+import Poker from './Poker'
 
 const Game = () => {
-  let A = [];
+  let deck = [];
   for (let i = 0; i < 52; i++) {
-    A.push(i);
+    deck.push(i);
   }
   for (let i = 0; i < 52; i++) {
     const r = Math.floor(Math.random() * 51);
-    [A[i], A[r]] = [A[r], A[i]]
-  }
-  console.log(A);
-
-  const change = () => {
-    console.log("HI");
+    [deck[i], deck[r]] = [deck[r], deck[i]]
   }
 
   return (
     <>
-      <Cards cards={A} />
-      <Button
-        onClick={change}
-      />
+      <Poker deck={deck} />
     </>
   );
 }
