@@ -1,8 +1,8 @@
 
-const Text = () => {
+const Text = ({ text }) => {
   return (
     <div className="text-wrap">
-      掛け金を決め　かえたいカードにチェックを入れ　くばるを押してください．
+      {text}
     </div>
   );
 }

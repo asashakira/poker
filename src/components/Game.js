@@ -1,20 +1,26 @@
+import { useState } from 'react'
 import Poker from './Poker'
 
-const Game = () => {
-  let deck = [];
+const Game = ({ ranks }) => {
+  const [deck, setDeck] = useState(() => initDeck());
+
+  const shuffle = () => {
+    setDeck(() => initDeck());
+  }
+
+  return <Poker deck={deck} shuffle={shuffle} ranks={ranks} />
+}
+
+const initDeck = () => {
+  let D = [];
   for (let i = 0; i < 52; i++) {
-    deck.push(i);
+    D.push(i);
   }
   for (let i = 0; i < 52; i++) {
     const r = Math.floor(Math.random() * 51);
-    [deck[i], deck[r]] = [deck[r], deck[i]]
+    [D[i], D[r]] = [D[r], D[i]]
   }
-
-  return (
-    <>
-      <Poker deck={deck} />
-    </>
-  );
+  return D;
 }
 
 export default Game
