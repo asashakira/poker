@@ -1,29 +1,16 @@
 
-const RankTable = () => {
-  const rankNames = [
-    "ツーペア",
-    "スリーカード",
-    "ストレート",
-    "フラッシュ",
-    "フルハウス",
-    "フォーカード",
-    "ストレートフラッシュ",
-    "ファイブカード",
-    "ロイヤルストレートフラッシュ",
-    "ロイヤルストレートスライム",
-  ];
-
-  const table = [];
-  for (let i = 9; i >= 0; i--) {
-    table.push(
-      <div className="rank">
-        <div className="rank-name">{rankNames[i]}</div>
-        <div className="rank-coins">1000</div>
-      </div>
-    );
-  }
+const RankTable = ({ ranks }) => {
   return (
-    <div id="rank-table"> {table} </div>
+    <div id="rank-table">
+      {
+        ranks.map((rank) => (
+          <div key={rank.id} className="rank">
+            <div className="rank-name">{rank.text}</div>
+            <div className="rank-coins">{rank.bet}</div>
+          </div>
+        )).slice(1).reverse()
+      }
+    </div>
   );
 }
 

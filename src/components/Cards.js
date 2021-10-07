@@ -1,23 +1,29 @@
 
-const Card = ({ card }) => {
+const Card = ({ card, judge }) => {
   return (
     <div className="card">
-      <label htmlFor={`img${card}`}>
-        <img className="pointer-active" id="" src={`/images/cards/${card}.png`} alt="" />
+      <label htmlFor={`img-${card}`}>
+        <img className="pointer-active" src={`/images/cards/${card}.png`} alt="" />
       </label>
-      <input id={`img${card}`} type="checkbox" />かえる
+      {judge ? (
+        <></>
+      ) : (
+        <>
+          <input id={`img-${card}`} type="checkbox" />かえる
+        </>
+      )}
     </div>
   );
 }
 
-const Cards = ({ cards }) => {
+const Cards = ({ cards, judge }) => {
   return (
     <div className="cards">
-      <Card card={cards[0]}/>
-      <Card card={cards[1]}/>
-      <Card card={cards[2]}/>
-      <Card card={cards[3]}/>
-      <Card card={cards[4]}/>
+      {
+        cards.map(card => (
+          <Card key={`card${card}`} card={card} judge={judge} />
+        ))
+      }
     </div>
   );
 }

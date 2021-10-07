@@ -1,29 +1,26 @@
-import Cards from './Cards'
-import Button from './Button'
+import { useState } from 'react'
+import Poker from './Poker'
 
-const Game = () => {
-  let A = [];
+const Game = ({ ranks }) => {
+  const [deck, setDeck] = useState(() => initDeck());
+
+  const shuffle = () => {
+    setDeck(() => initDeck());
+  }
+
+  return <Poker deck={deck} shuffle={shuffle} ranks={ranks} />
+}
+
+const initDeck = () => {
+  let D = [];
   for (let i = 0; i < 52; i++) {
-    A.push(i);
+    D.push(i);
   }
   for (let i = 0; i < 52; i++) {
     const r = Math.floor(Math.random() * 51);
-    [A[i], A[r]] = [A[r], A[i]]
+    [D[i], D[r]] = [D[r], D[i]]
   }
-  console.log(A);
-
-  const change = () => {
-    console.log("HI");
-  }
-
-  return (
-    <>
-      <Cards cards={A} />
-      <Button
-        onClick={change}
-      />
-    </>
-  );
+  return D;
 }
 
 export default Game
